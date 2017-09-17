@@ -1,5 +1,5 @@
 {
-  "name": "launching-scrapers-with-script",
+  "name": "cron-launcher",
   "version": "1.0.0",
   "description": "",
   "main": "handler.js",
@@ -15,5 +15,8 @@
     "request": "^2.81.0",
     "request-promise": "^4.2.1",
     "uuid": "^3.1.0"
+  },
+  "devDependencies": {
+    "serverless-offline-scheduler": "^0.3.3"
   }
 }

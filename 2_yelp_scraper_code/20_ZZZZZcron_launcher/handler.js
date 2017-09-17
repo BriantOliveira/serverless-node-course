@@ -1,5 +1,10 @@
 "use strict";
-const { getPage, parsePage, saveRatingsToDB } = require("./utils");
+const {
+  getPage,
+  parsePage,
+  saveRatingsToDB,
+  deployScrapers
+} = require("./utils");
 
 module.exports.scrape = (event, context, callback) => {
   // 1. fetch yelp page
@@ -19,4 +24,16 @@ module.exports.scrape = (event, context, callback) => {
     .catch(error =>
       callback(new Error(`Error scraping ${event}: ${JSON.stringify(error)}`))
     );
+};
+
+module.exports.launch_scrapers = (event, context, callback) => {
+  const fakeDBResults = [
+    "urban-light-at-lacma-los-angeles",
+    "the-museum-of-contemporary-art-los-angeles",
+    "the-last-bookstore-los-angeles"
+  ];
+
+  fakeDBResults.forEach(businessName => {
+    deployScrapers(businessName);
+  });
 };
